@@ -6,7 +6,7 @@ import { vapi } from "@/lib/vapi.sdk";
 import Image from "next/image";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import soundwaves from "@/constants/soundwaves.json";
-// import { addToSessionHistory } from "@/lib/actions/companion.action";
+import { addToSessionHistory } from "@/lib/actions/companion.action";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -16,7 +16,7 @@ enum CallStatus {
 }
 
 const CompanionComponent = ({
-  //   companionId,
+  companionId,
   subject,
   topic,
   name,
@@ -47,7 +47,7 @@ const CompanionComponent = ({
 
     const onCallEnd = () => {
       setCallStatus(CallStatus.FINISHED);
-      //   addToSessionHistory(companionId);
+      addToSessionHistory(companionId);
     };
 
     const onMessage = (message: Message) => {
