@@ -28,10 +28,8 @@ const CompanionCard = ({
   const pathname = usePathname();
   const handleBookmark = async () => {
     if (bookmarked) {
-      console.log(bookmarked, "removing bookmark");
       await removeBookmark(id, pathname);
     } else {
-      console.log(bookmarked, "adding bookmark");
       await addBookmark(id, pathname);
     }
   };

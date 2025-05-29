@@ -178,7 +178,7 @@ export const addBookmark = async (companionId: string, path: string) => {
     throw new Error(error.message);
   }
   revalidatePath(path);
-  console.log("Bookmark added", data);
+
   return data;
 };
 
@@ -195,7 +195,7 @@ export const removeBookmark = async (companionId: string, path: string) => {
     throw new Error(error.message);
   }
   revalidatePath(path);
-  console.log("Bookmark removed", data);
+
   return data;
 };
 
@@ -209,9 +209,6 @@ export const getBookmarkedCompanions = async (userId: string) => {
     throw new Error(error.message);
   }
   // We don't need the bookmarks data, so we return only the companions
-  console.log(
-    data.map(({ companions }) => companions),
-    "bookmarked companions"
-  );
+
   return data.map(({ companions }) => companions);
 };
