@@ -1,6 +1,10 @@
+"use client";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { removeBookmark } from "@/lib/actions/companion.action";
+import { addBookmark } from "@/lib/actions/companion.action";
+import { usePathname } from "next/navigation";
 
 interface CompanionCardProps {
   id: string;
@@ -9,6 +13,7 @@ interface CompanionCardProps {
   subject: string;
   duration: number;
   color: string;
+  bookmarked: boolean;
 }
 
 const CompanionCard = ({
@@ -18,14 +23,31 @@ const CompanionCard = ({
   subject,
   duration,
   color,
+  bookmarked,
 }: CompanionCardProps) => {
+  const pathname = usePathname();
+  const handleBookmark = async () => {
+    if (bookmarked) {
+      console.log(bookmarked, "removing bookmark");
+      await removeBookmark(id, pathname);
+    } else {
+      console.log(bookmarked, "adding bookmark");
+      await addBookmark(id, pathname);
+    }
+  };
+
   return (
     <article className="companion-card" style={{ backgroundColor: color }}>
       <div className="flex justify-between items-center">
         <div className="subject-badge">{subject}</div>
-        <Button className="companion-bookmark rounded-full px-3">
+        <Button
+          className="companion-bookmark rounded-full px-3"
+          onClick={handleBookmark}
+        >
           <Image
-            src={"/icons/bookmark.svg"}
+            src={
+              bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
+            }
             alt="bookmark"
             width={13}
             height={15}

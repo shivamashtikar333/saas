@@ -12,6 +12,7 @@ import React from "react";
 const Page = async () => {
   const companions = await getAllCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
+  console.log("companions", companions);
   return (
     <main>
       <h1 className="text-2xl">Popular Companion</h1>
