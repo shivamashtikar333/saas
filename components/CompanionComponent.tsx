@@ -128,7 +128,7 @@ const CompanionComponent = ({
                 alt={subject}
                 width={150}
                 height={150}
-                className="max-sm:w-fit"
+                className="max-sm:w-11 max-sm:h-11"
               />
             </div>
 
