@@ -105,7 +105,7 @@ const CompanionComponent = ({
   };
 
   return (
-    <section className="flex flex-col h-[70vh]">
+    <section className="flex flex-col h-[100vh]">
       <section className="flex gap-8 max-sm:flex-col">
         <div className="companion-section">
           <div
@@ -194,7 +194,7 @@ const CompanionComponent = ({
         </div>
       </section>
 
-      <section className="transcript">
+      <section className="transcript ">
         <div className="transcript-message no-scrollbar">
           {messages.map((message, index) => {
             if (message.role === "assistant") {
